@@ -106,7 +106,7 @@ public:
         if (!head) return; // empty list
 
         Node* temp = head;
-        for (int i = 0; i < position && (temp != nullptr); ++i)
+        for (int i = 1; i < position && (temp != nullptr); ++i)
             temp = temp->next;
 
         // Case - deleting head
@@ -203,6 +203,8 @@ int main() {
     list.pop_back();
     list.print();
 
-    
+    cout << "delete_pos(): \n";
+    list.delete_pos(2);
+    list.print();
     return 0;
 }
