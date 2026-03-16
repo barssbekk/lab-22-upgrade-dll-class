@@ -128,27 +128,27 @@ public:
     void pop_front() {
         if (!head) return;
 
-        Node* temp = head;
-        head = head->next;
+        Node* temp = head; // just save first node
+        head = head->next; // move head forward
 
         if (head)
-            head->prev = nullptr;
+            head->prev = nullptr; // no prev
         else
-            tail = nullptr;
+            tail = nullptr; // now list is empty
 
-        delete temp;
+        delete temp; // delete old head
     }
 
     void pop_back() {
         if (!tail) return;
 
-        Node* temp = tail;
-        tail = tail->prev;
+        Node* temp = tail; // keep the last node so we can delete it
+        tail = tail->prev; // move tail back to the previous node
 
         if (tail)
             tail->next = nullptr;
         else
-            head = nullptr;
+            head = nullptr; // list had one node, now it becomes empty
 
         delete temp;
     }
@@ -184,7 +184,7 @@ public:
 
 // Driver program
 int main() {
-    srand(time(0));
+    // srand(time(0)); keep it commented for testing
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
@@ -205,6 +205,10 @@ int main() {
 
     cout << "delete_pos(): \n";
     list.delete_pos(2);
+    list.print();
+
+    cout << "delete_val(): \n";
+    list.delete_val(50);
     list.print();
     return 0;
 }
