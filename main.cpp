@@ -1,5 +1,6 @@
 // COMSC-210 | Lab 22 | Barsbek
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -138,6 +139,20 @@ public:
         delete temp;
     }
 
+    void pop_back() {
+        if (!tail) return;
+
+        Node* temp = head;
+        tail = tail->next;
+
+        if (head)
+            tail->prev = nullptr;
+        else
+            tail = nullptr;
+
+        delete temp;
+    }
+
     void print() {
         Node* current = head;
         if (!current) return;
@@ -169,6 +184,7 @@ public:
 
 // Driver program
 int main() {
+    srand(time(0));
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
