@@ -101,6 +101,14 @@ public:
         delete temp;
     }
 
+    void delete_pos(int position) { // Deletes a node by position
+        if (!head) return; // empty list
+
+        Node* temp = head;
+        for (int i = 0; i < position && (temp != nullptr); ++i)
+            temp = temp->next;
+    }
+
     void print() {
         Node* current = head;
         if (!current) return;
