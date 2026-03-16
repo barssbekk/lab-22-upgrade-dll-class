@@ -108,12 +108,20 @@ public:
         for (int i = 0; i < position && (temp != nullptr); ++i)
             temp = temp->next;
 
+        // Case - deleting head
         if (!temp) return; // no position
         if (temp->prev)
             temp->prev->next = temp->next;
         else
             head = temp->next; // deletes head
-        
+
+        // Case - deleting tail
+        if (temp->next)
+            temp->next->prev = temp->prev;
+        else
+            tail = temp->prev; // deletes tail
+
+        delete temp;
     }
 
     void print() {
