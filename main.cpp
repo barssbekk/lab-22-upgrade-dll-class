@@ -107,6 +107,13 @@ public:
         Node* temp = head;
         for (int i = 0; i < position && (temp != nullptr); ++i)
             temp = temp->next;
+
+        if (!temp) return; // no position
+        if (temp->prev)
+            temp->prev->next = temp->next;
+        else
+            head = temp->next; // deletes head
+        
     }
 
     void print() {
