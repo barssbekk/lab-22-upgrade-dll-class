@@ -142,13 +142,13 @@ public:
     void pop_back() {
         if (!tail) return;
 
-        Node* temp = head;
-        tail = tail->next;
+        Node* temp = tail;
+        tail = tail->prev;
 
-        if (head)
-            tail->prev = nullptr;
+        if (tail)
+            tail->next = nullptr;
         else
-            tail = nullptr;
+            head = nullptr;
 
         delete temp;
     }
